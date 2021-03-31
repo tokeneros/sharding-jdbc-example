@@ -1,4 +1,4 @@
-package com.eros.shard.jdbc.shardingAlgorithm;
+package com.eros.shard.jdbc.shardingRule.strategy.algorithm;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.shardingsphere.api.sharding.standard.PreciseShardingAlgorithm;
@@ -13,9 +13,9 @@ import java.util.Collection;
  * @Date: 2021/3/29 18:12
  * @Description:
  */
-public class UserPreciseShardingAlgorithm implements PreciseShardingAlgorithm<Integer> {
+public class TablePreciseShardingAlgorithm implements PreciseShardingAlgorithm<Integer> {
 
-    private final static Logger logger = LoggerFactory.getLogger(UserPreciseShardingAlgorithm.class);
+    private final static Logger logger = LoggerFactory.getLogger(TablePreciseShardingAlgorithm.class);
 
     @Override
     public String doSharding(Collection<String> collection, PreciseShardingValue<Integer> preciseShardingValue) {

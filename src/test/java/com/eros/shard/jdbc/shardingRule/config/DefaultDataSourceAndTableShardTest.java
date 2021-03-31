@@ -1,8 +1,8 @@
 package com.eros.shard.jdbc.shardingRule.config;
 
-import com.eros.shard.config.AbstractPreciseShardingAlgorithm;
 import com.eros.shard.jdbc.ShardJdbcDataSource;
 import com.eros.shard.jdbc.shardingAlgorithm.UserPreciseShardingAlgorithm;
+import com.eros.shard.jdbc.shardingRule.ShardingRuleConfigTest;
 import org.apache.shardingsphere.api.config.sharding.ShardingRuleConfiguration;
 import org.apache.shardingsphere.api.config.sharding.strategy.StandardShardingStrategyConfiguration;
 import org.slf4j.Logger;
@@ -41,7 +41,7 @@ public class DefaultDataSourceAndTableShardTest extends ShardJdbcDataSource impl
         shardingRuleConfig.setDefaultDataSourceName("ds0");
         // 默认分库策略配置
 //        shardingRuleConfig.setDefaultDatabaseShardingStrategyConfig(new StandardShardingStrategyConfiguration("user_id",
-//                new UserPreciseShardingAlgorithm()));
+//                new TablePreciseShardingAlgorithm()));
         // 默认分表策略配置
         shardingRuleConfig.setDefaultTableShardingStrategyConfig(new StandardShardingStrategyConfiguration("user_id",
                 new UserPreciseShardingAlgorithm()));

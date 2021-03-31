@@ -1,6 +1,7 @@
 package com.eros.shard.jdbc.shardingRule.config;
 
 import com.eros.shard.jdbc.ShardJdbcDataSource;
+import com.eros.shard.jdbc.shardingRule.ShardingRuleConfigTest;
 import org.apache.shardingsphere.api.config.sharding.ShardingRuleConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

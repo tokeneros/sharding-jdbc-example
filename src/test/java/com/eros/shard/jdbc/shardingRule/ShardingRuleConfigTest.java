@@ -1,4 +1,4 @@
-package com.eros.shard.jdbc.shardingRule.config;
+package com.eros.shard.jdbc.shardingRule;
 
 import org.apache.shardingsphere.api.config.sharding.ShardingRuleConfiguration;
 

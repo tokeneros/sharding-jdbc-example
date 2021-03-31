@@ -1,8 +1,7 @@
-package com.eros.shard.jdbc.shardingAlgorithm;
+package com.eros.shard.jdbc.shardingRule.strategy.algorithm;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Range;
-import org.apache.shardingsphere.api.sharding.standard.PreciseShardingValue;
 import org.apache.shardingsphere.api.sharding.standard.RangeShardingAlgorithm;
 import org.apache.shardingsphere.api.sharding.standard.RangeShardingValue;
 import org.slf4j.Logger;
@@ -16,9 +15,9 @@ import java.util.Collection;
  * @Date: 2021/3/30 15:48
  * @Description:
  */
-public class UserRangeShardingAlgorithm implements RangeShardingAlgorithm<Integer> {
+public class TableRangeShardingAlgorithm implements RangeShardingAlgorithm<Integer> {
 
-    private final static Logger logger = LoggerFactory.getLogger(UserRangeShardingAlgorithm.class);
+    private final static Logger logger = LoggerFactory.getLogger(TableRangeShardingAlgorithm.class);
 
     /**
      * 实现between and查询

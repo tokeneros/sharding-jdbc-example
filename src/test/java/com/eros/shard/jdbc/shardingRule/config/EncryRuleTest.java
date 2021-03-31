@@ -4,15 +4,14 @@ import com.eros.shard.jdbc.ShardJdbcDataSource;
 import com.eros.shard.jdbc.shardingAlgorithm.DbPreciseShardingAlgorithm;
 import com.eros.shard.jdbc.shardingAlgorithm.UserPreciseShardingAlgorithm;
 import com.eros.shard.jdbc.shardingAlgorithm.UserRangeShardingAlgorithm;
+import com.eros.shard.jdbc.shardingRule.ShardingRuleConfigTest;
 import org.apache.shardingsphere.api.config.sharding.ShardingRuleConfiguration;
 import org.apache.shardingsphere.api.config.sharding.TableRuleConfiguration;
-import org.apache.shardingsphere.api.config.sharding.strategy.ShardingStrategyConfiguration;
 import org.apache.shardingsphere.api.config.sharding.strategy.StandardShardingStrategyConfiguration;
 import org.apache.shardingsphere.encrypt.api.EncryptColumnRuleConfiguration;
 import org.apache.shardingsphere.encrypt.api.EncryptRuleConfiguration;
 import org.apache.shardingsphere.encrypt.api.EncryptTableRuleConfiguration;
 import org.apache.shardingsphere.encrypt.api.EncryptorRuleConfiguration;
-import org.apache.shardingsphere.encrypt.merge.dql.EncryptorMetaData;
 import org.apache.shardingsphere.shardingjdbc.jdbc.core.resultset.ShardingResultSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +44,7 @@ public class EncryRuleTest extends ShardJdbcDataSource implements ShardingRuleCo
         List<TableRuleConfiguration> tableRuleConfigurationList = new ArrayList<>();
         for (String table : tables) {
             TableRuleConfiguration tableRuleConfiguration = new TableRuleConfiguration(table, String.format("ds${0..1}.%s_${0..1}", table));
-//            tableRuleConfiguration.setTableShardingStrategyConfig(new ShardingStrategyConfiguration());new UserRangeShardingAlgorithm()]
+//            tableRuleConfiguration.setTableShardingStrategyConfig(new ShardingStrategyConfiguration());new TableRangeShardingAlgorithm()]
             tableRuleConfigurationList.add(tableRuleConfiguration);
         }
         return tableRuleConfigurationList;
@@ -146,11 +145,11 @@ public class EncryRuleTest extends ShardJdbcDataSource implements ShardingRuleCo
         // 这种正常
 //        String sql = "SELECT `id`, `user_id`, `order_id`, `order_msg`  FROM qmai_order LIMIT 10";
         // todo 此语句 java.lang.UnsupportedOperationException: Cannot find range sharding strategy in sharding rule. 需要配置RangeShardingAlgorithm
-//        String sql = "SELECT `id`, `user_id`, `order_id`, `order_msg` FROM qmai_order WHERE user_id BETWEEN 500 AND 600";
+        String sql = "SELECT `id`, `user_id`, `order_id`, `order_msg` FROM qmai_order WHERE user_id BETWEEN 500 AND 600";
         // todo 这样无范围的查询语句，将无法进行处理
 //        String sql = "SELECT `id`, `user_id`, `order_id`, `order_msg` FROM qmai_order WHERE user_id > 500";
         // 不涉及分片键,正常
-        String sql = "SELECT `id`, `user_id`, `order_id`, `order_msg` FROM qmai_order WHERE order_id > 0";
+//        String sql = "SELECT `id`, `user_id`, `order_id`, `order_msg` FROM qmai_order WHERE order_id > 0";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeQuery();
         // todo 最后返回的 ShardingResultSet 并不是最终结果，其中包含ResultSets，没有归并最终集合吗
@@ -165,14 +164,14 @@ public class EncryRuleTest extends ShardJdbcDataSource implements ShardingRuleCo
             ResultSetMetaData metaData = set.getMetaData();
             int columnCount = metaData.getColumnCount();
             logger.info("本次执行成功, 库: {} 表: {} 查询条数: {}", set.getMetaData().getCatalogName(1), set.getMetaData().getTableName(1), rowCount);
-            if(rowCount > 0) {
-                do {
-                    for (int i = 1; i <= columnCount; i++) {
-                        String columnLabel = metaData.getColumnLabel(i);
-                        logger.info("index: {}, columnLabel: {}, columnVal: {}", i, columnLabel, set.getString(columnLabel));
-                    }
-                } while (set.next());
-            }
+//            if(rowCount > 0) {
+//                do {
+//                    for (int i = 1; i <= columnCount; i++) {
+//                        String columnLabel = metaData.getColumnLabel(i);
+//                        logger.info("index: {}, columnLabel: {}, columnVal: {}", i, columnLabel, set.getString(columnLabel));
+//                    }
+//                } while (set.next());
+//            }
         }
     }
 

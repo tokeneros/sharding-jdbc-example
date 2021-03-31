@@ -1,4 +1,4 @@
-package com.eros.shard.jdbc.shardingAlgorithm;
+package com.eros.shard.jdbc.shardingRule.strategy.algorithm;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.shardingsphere.api.sharding.standard.PreciseShardingAlgorithm;

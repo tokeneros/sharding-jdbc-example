@@ -21,11 +21,27 @@ public class ShardJdbcDataSource {
 
     public final static String tables = "qmai_order";
 
-    public static List<String> getTable() {
+    protected List<String> getTable() {
         String[] split = tables.split(",");
         List<String> objects = new ArrayList<>();
         Collections.addAll(objects, split);
         return objects;
+    }
+
+
+    /**
+     * 这里需要 会根据actualDataNodes 拆分数据节点
+     * 多个表封装, 每个表可以配置独特的参数信息，也可以统一使用默认的分表策略
+     * @return
+     */
+    public List<TableRuleConfiguration> tableRuleConfigurationList() {
+        List<String> tables = getTable();
+        List<TableRuleConfiguration> tableRuleConfigurationList = new ArrayList<>();
+        for (String table : tables) {
+            TableRuleConfiguration tableRuleConfiguration = new TableRuleConfiguration(table, String.format("ds${0..1}.%s_${0..1}", table));
+            tableRuleConfigurationList.add(tableRuleConfiguration);
+        }
+        return tableRuleConfigurationList;
     }
 
     /**
@@ -33,22 +49,22 @@ public class ShardJdbcDataSource {
      *
      * @return
      */
-    public static Map<String, DataSource> dataSource() {
+    private Map<String, DataSource> dataSource() {
         // 配置真实数据源
         Map<String, DataSource> dataSourceMap = new HashMap<>();
         // 配置第 1 个数据源
         HikariDataSource dataSource1 = new HikariDataSource();
         dataSource1.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource1.setJdbcUrl("jdbc:mysql://localhost:3306/spider_0?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&useAffectedRows=true");
+        dataSource1.setJdbcUrl("jdbc:mysql://106.15.170.42:23305/spider_0?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&useAffectedRows=true");
         dataSource1.setUsername("root");
-        dataSource1.setPassword("root");
+        dataSource1.setPassword("initialD");
         dataSourceMap.put("ds0", dataSource1);
         // 配置第 2 个数据源
         HikariDataSource dataSource2 = new HikariDataSource();
         dataSource2.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource2.setJdbcUrl("jdbc:mysql://localhost:3306/spider_1?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&useAffectedRows=true");
+        dataSource2.setJdbcUrl("jdbc:mysql://106.15.170.42:23305/spider_1?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&useAffectedRows=true");
         dataSource2.setUsername("root");
-        dataSource2.setPassword("root");
+        dataSource2.setPassword("initialD");
         dataSourceMap.put("ds1", dataSource2);
         return dataSourceMap;
     }
@@ -94,6 +110,8 @@ public class ShardJdbcDataSource {
             Properties properties = new Properties();
             // 打印sql语句
             properties.put("sql.show", "true");
+            properties.put("sql-simple", "true");
+            properties.put("check-table-metadata-enabled", "true");
             dataSource = ShardingDataSourceFactory.createDataSource(dataSourceMap, shardingRuleConfig, properties);
         } catch (SQLException e) {
             e.printStackTrace();

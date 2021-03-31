@@ -1,16 +1,13 @@
 package com.eros.shard.jdbc.shardingRule.config;
 
-import com.eros.shard.config.AbstractPreciseShardingAlgorithm;
 import com.eros.shard.jdbc.ShardJdbcDataSource;
 import com.eros.shard.jdbc.shardingAlgorithm.DbPreciseShardingAlgorithm;
 import com.eros.shard.jdbc.shardingAlgorithm.UserPreciseShardingAlgorithm;
+import com.eros.shard.jdbc.shardingRule.ShardingRuleConfigTest;
 import org.apache.shardingsphere.api.config.sharding.ShardingRuleConfiguration;
 import org.apache.shardingsphere.api.config.sharding.TableRuleConfiguration;
 import org.apache.shardingsphere.api.config.sharding.strategy.StandardShardingStrategyConfiguration;
-import org.apache.shardingsphere.shardingjdbc.api.ShardingDataSourceFactory;
 import org.apache.shardingsphere.shardingjdbc.jdbc.core.resultset.ShardingResultSet;
-import org.apache.shardingsphere.sql.parser.sql.statement.dml.SelectStatement;
-import org.apache.shardingsphere.underlying.pluggble.merge.MergeEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
