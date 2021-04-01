@@ -1,4 +1,4 @@
-package com.eros.shard.review.config.strategy;
+package com.eros.shard.review.config.algorithm;
 
 import org.apache.shardingsphere.api.config.sharding.TableRuleConfiguration;
 import org.apache.shardingsphere.api.hint.HintManager;

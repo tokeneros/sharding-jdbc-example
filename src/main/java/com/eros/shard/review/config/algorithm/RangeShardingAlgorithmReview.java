@@ -1,4 +1,4 @@
-package com.eros.shard.review.config.strategy;
+package com.eros.shard.review.config.algorithm;
 
 import com.google.common.collect.Range;
 import org.apache.shardingsphere.api.sharding.standard.RangeShardingAlgorithm;

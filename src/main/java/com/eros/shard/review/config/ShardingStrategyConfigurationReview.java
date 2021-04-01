@@ -16,7 +16,7 @@ import org.apache.shardingsphere.api.sharding.standard.RangeShardingAlgorithm;
  * 下方是官方提供的实现类
  *
  * @see HintShardingStrategyConfiguration#HintShardingStrategyConfiguration(HintShardingAlgorithm) 
- * hint 分片策略 {@link com.eros.shard.review.config.strategy.HintShardingAlgorithmReview}
+ * hint 分片策略 {@link com.eros.shard.review.config.algorithm.HintShardingAlgorithmReview}
  *
  * @see ComplexShardingStrategyConfiguration#ComplexShardingStrategyConfiguration(String, ComplexKeysShardingAlgorithm)
  * 复合分片策略 - 多分片键 todo 无场景测试
@@ -25,10 +25,10 @@ import org.apache.shardingsphere.api.sharding.standard.RangeShardingAlgorithm;
  * 无分片策略 - 执行全路由
  *
  * @see StandardShardingStrategyConfiguration#StandardShardingStrategyConfiguration(String, PreciseShardingAlgorithm)
- * 标准分片策略 - sql 解析引擎 分析到=和in的路由 {@link com.eros.shard.review.config.strategy.PreciseShardingAlgorithmReview}
+ * 标准分片策略 - sql 解析引擎 分析到=和in的路由 {@link com.eros.shard.review.config.algorithm.PreciseShardingAlgorithmReview}
  * 
  * @see StandardShardingStrategyConfiguration#StandardShardingStrategyConfiguration(String, PreciseShardingAlgorithm, RangeShardingAlgorithm)
- * 标准分片策略 - sql 解析引擎 分析Between and 的路由 {@link com.eros.shard.review.config.strategy.RangeShardingAlgorithmReview}
+ * 标准分片策略 - sql 解析引擎 分析Between and 的路由 {@link com.eros.shard.review.config.algorithm.RangeShardingAlgorithmReview}
  *
  * @see InlineShardingStrategyConfiguration#InlineShardingStrategyConfiguration(String, String)
  * 内联分片策略 - todo 未研究
