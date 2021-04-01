@@ -1,4 +1,4 @@
-package com.eros.shard.review.strategy;
+package com.eros.shard.review.config.strategy;
 
 import org.apache.shardingsphere.api.sharding.standard.PreciseShardingAlgorithm;
 import org.apache.shardingsphere.api.sharding.standard.PreciseShardingValue;

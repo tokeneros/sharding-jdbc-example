@@ -6,6 +6,7 @@ import org.apache.shardingsphere.api.config.sharding.ShardingRuleConfiguration;
 import org.apache.shardingsphere.api.config.sharding.TableRuleConfiguration;
 import org.apache.shardingsphere.api.config.sharding.strategy.StandardShardingStrategyConfiguration;
 import org.apache.shardingsphere.shardingjdbc.api.ShardingDataSourceFactory;
+import org.apache.shardingsphere.underlying.common.config.properties.ConfigurationPropertyKey;
 import org.springframework.context.annotation.Bean;
 
 import javax.sql.DataSource;
@@ -110,8 +111,8 @@ public class ShardJdbcDataSource {
             Properties properties = new Properties();
             // 打印sql语句
             properties.put("sql.show", "true");
-            properties.put("sql-simple", "true");
-            properties.put("check-table-metadata-enabled", "true");
+            properties.put("sql.simple", "false");
+            properties.put(ConfigurationPropertyKey.CHECK_TABLE_METADATA_ENABLED.getKey(), "true");
             dataSource = ShardingDataSourceFactory.createDataSource(dataSourceMap, shardingRuleConfig, properties);
         } catch (SQLException e) {
             e.printStackTrace();

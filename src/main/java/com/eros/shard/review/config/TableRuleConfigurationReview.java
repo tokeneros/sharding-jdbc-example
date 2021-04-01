@@ -1,4 +1,4 @@
-package com.eros.shard.review;
+package com.eros.shard.review.config;
 
 import org.apache.shardingsphere.api.config.sharding.KeyGeneratorConfiguration;
 import org.apache.shardingsphere.api.config.sharding.TableRuleConfiguration;

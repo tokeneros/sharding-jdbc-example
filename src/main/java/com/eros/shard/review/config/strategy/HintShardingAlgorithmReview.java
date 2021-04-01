@@ -1,11 +1,9 @@
-package com.eros.shard.review.strategy;
+package com.eros.shard.review.config.strategy;
 
 import org.apache.shardingsphere.api.config.sharding.TableRuleConfiguration;
-import org.apache.shardingsphere.api.config.sharding.strategy.HintShardingStrategyConfiguration;
 import org.apache.shardingsphere.api.hint.HintManager;
 import org.apache.shardingsphere.api.sharding.hint.HintShardingAlgorithm;
 import org.apache.shardingsphere.api.sharding.hint.HintShardingValue;
-import org.apache.shardingsphere.core.strategy.route.hint.HintShardingStrategy;
 
 import java.util.Collection;
 
