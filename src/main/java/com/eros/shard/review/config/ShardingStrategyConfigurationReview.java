@@ -31,7 +31,7 @@ import org.apache.shardingsphere.api.sharding.standard.RangeShardingAlgorithm;
  * 标准分片策略 - sql 解析引擎 分析Between and 的路由 {@link com.eros.shard.review.config.algorithm.RangeShardingAlgorithmReview}
  *
  * @see InlineShardingStrategyConfiguration#InlineShardingStrategyConfiguration(String, String)
- * 内联分片策略 - todo 未研究
+ * 内联分片策略 - {@link com.eros.shard.review.config.algorithm.InlineShardingAlgorithmReview}
  */
 public class ShardingStrategyConfigurationReview {
 
