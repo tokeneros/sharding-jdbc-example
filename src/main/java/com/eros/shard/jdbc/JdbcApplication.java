@@ -1,9 +1,7 @@
 package com.eros.shard.jdbc;
 
-import com.eros.shard.config.ShardingJdbcConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author eros

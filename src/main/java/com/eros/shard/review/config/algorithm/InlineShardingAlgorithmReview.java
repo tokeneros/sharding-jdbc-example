@@ -11,7 +11,7 @@ import java.util.Collection;
  * @Date: 2021/4/1 10:25
  * @Description:
  *
- * 请注意！！！ 不存在InlineShardingAlgorithm, 其他几类都是算法包含在策略中
+ * todo 请注意！！！ 不存在InlineShardingAlgorithm, 其他几类都是算法包含在策略中
  * 这里使用{@link InlineShardingStrategyConfiguration#InlineShardingStrategyConfiguration(String shardingColumn, String algorithmExpression)}
  * 会通过解析 algorithmExpression 生成最后的策略 例如：new InlineShardingStrategyConfiguration("user_id", "ds${user_id % (2 * 2) / 2}"))
  * {@link InlineShardingStrategy} 直接含有{@link InlineShardingStrategy#doSharding(Collection availableTargetNames, Collection shardingValues, ConfigurationProperties properties)}

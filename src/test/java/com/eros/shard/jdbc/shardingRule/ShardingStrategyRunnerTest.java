@@ -1,6 +1,7 @@
-package com.eros.shard.jdbc.shardingRule.strategy;
+package com.eros.shard.jdbc.shardingRule;
 
 import com.eros.shard.jdbc.ShardJdbcDataSource;
+import com.eros.shard.jdbc.shardingRule.strategy.InlineStrategyTest;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
